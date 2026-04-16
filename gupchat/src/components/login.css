@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.form-input {
+    padding-left:20%;
+    padding-right: 2vh;
+    margin: 2vh;
+}
+
+.login-form {
+
+    position: relative;
+    height: 25vh;
+    width: 35vh;
+    box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color:#FFFFFF ;
+    background: rgba(255, 255, 255, 0.75);
+    z-index: 2;
+    border-radius: 2vh;
+    padding: 3vh;
+    padding-bottom: 0.2vh;
+}
+
+.btn {
+    margin-top: 25%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}

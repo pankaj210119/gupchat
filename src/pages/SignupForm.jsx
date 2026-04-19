@@ -31,10 +31,9 @@ export default function Signup() {
             <ion-icon name="mail-outline"></ion-icon>
           </span>
           <input
-          value={email}
+            value={email}
             type="email"
             required
-            placeholder="enter email"
             onChange={(e) => setEmail(e.target.value)}
           />
           <label>Email</label>
@@ -44,23 +43,24 @@ export default function Signup() {
             <ion-icon name="lock-closed-outline"></ion-icon>
           </span>
           <input
-          value={password}
+            value={password}
             type="password"
             required
-            placeholder="create Password"
             onChange={(e) => setPassword(e.target.value)}
           />
           <label>Password</label>
         </div>
-        <div className="remember">
+        {/* <div className="remember">
           <label>
             <input type="checkbox" /> Remember me
           </label>
-        </div>
+        </div> */}
         <button type="submit">Login</button>
-        <p>
-          already have an account? <Link to={"/login"}>Login</Link>
-        </p>
+        <div className="register-link">
+          <p>
+            already have an account? <Link to={"/login"}>Login</Link>
+          </p>
+        </div>
       </form>
     </div>
   );

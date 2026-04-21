@@ -38,8 +38,10 @@ section {
 }
 
 #root {
+    margin: 0;
     display: flex;
-    align-items: center;justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
 h2 {
@@ -124,6 +126,17 @@ button {
     font-size: 1em;
     color: black;
     font-weight: 500;
+    transition: background 0.3s ease, transform 0.1s ease-out}
+
+button:hover {
+    color: whitesmoke;
+    background:rgb(71, 67, 62)
+
+}
+
+button:active {
+    transform: scale(0.95);
+    
 }
 
 .register-link {
@@ -156,4 +169,15 @@ button {
         width: 290px;
         ;
     }
+}
+
+.google-login-btn{
+    width: 50px;
+    height: 40px;
+    border: .2px solid rgba( 230, 243, 22, .5)
+}
+
+.notification-popup {
+    width: 300px;
+    background-color: aqua;
 }

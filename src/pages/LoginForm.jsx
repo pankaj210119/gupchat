@@ -1,17 +1,29 @@
 import { useState } from "react";
 import "./login.css";
-import { loginUser } from "../services/authServices";
-import { Link } from "react-router-dom";
+import { loginUser, loginWithGoogle } from "../services/authServices";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       await loginUser(email, password);
+      navigate("/dashboard");
       alert("you have logged in to your account");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleLoginWithGoogle = async (e) => {
+    e.preventDefault();
+    try {
+      await loginWithGoogle;
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
     }
@@ -41,7 +53,6 @@ export default function LoginForm() {
               value={password}
               type="password"
               required
-              a
               onChange={(e) => setPassword(e.target.value)}
             />
             <label>Password</label>
@@ -54,9 +65,20 @@ export default function LoginForm() {
           </div>
           <button type="submit">Login</button>
           <div className="register-link">
-          <p>
-            don't have an account? <Link to={"/signup"}>Signup</Link>
-          </p></div>
+            <p>
+              don't have an account? <Link to={"/signup"}>Signup</Link>
+            </p>
+          </div>
+          <div className="gooleAuth">
+            <button
+              className="google-login-btn"
+              onClick={handleLoginWithGoogle}
+            >
+              <span className="icon">
+                <ion-icon name="logo-google"></ion-icon>
+              </span>
+            </button>
+          </div>
         </form>
       </div>
     </section>

@@ -1,19 +1,32 @@
 import { useState } from "react";
 import "./login.css";
+import {auth} from "../services/firebase"
 import { loginUser, loginWithGoogle } from "../services/authServices";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
+  const applyPersistence = async () => {
+    await setPersistence(auth, 
+        rememberMe ? browserLocalPersistence : browserSessionPersistence);
+  };
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
+    try 
+      {
+        await applyPersistence(); 
       await loginUser(email, password);
       navigate("/dashboard");
-      alert("you have logged in to your account");
+      alert("you have logged in to your account"); 
     } catch (error) {
       console.error(error);
     }
@@ -22,7 +35,8 @@ export default function LoginForm() {
   const handleLoginWithGoogle = async (e) => {
     e.preventDefault();
     try {
-      await loginWithGoogle;
+      await applyPersistence();
+      await loginWithGoogle();
       navigate("/dashboard");
     } catch (error) {
       console.error(error);
@@ -59,7 +73,12 @@ export default function LoginForm() {
           </div>
           <div className="remember-forgot">
             <label>
-              <input type="checkbox" /> Remember me
+              <input
+                type="checkbox"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
+              />{" "}
+              Remember me
             </label>
             <Link to="/forgotPassword">Forgot Password</Link>
           </div>
@@ -69,8 +88,9 @@ export default function LoginForm() {
               don't have an account? <Link to={"/signup"}>Signup</Link>
             </p>
           </div>
-          <div className="gooleAuth">
+          <div className="googleAuth">
             <button
+            type="button"
               className="google-login-btn"
               onClick={handleLoginWithGoogle}
             >

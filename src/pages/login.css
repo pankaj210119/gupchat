@@ -136,6 +136,7 @@ button:hover {
 
 button:active {
     transform: scale(0.95);
+    background-color:rgb(100, 89, 77);
     
 }
 
@@ -172,12 +173,13 @@ button:active {
 }
 
 .google-login-btn{
-    width: 50px;
+    width: 100px;
     height: 40px;
     border: .2px solid rgba( 230, 243, 22, .5)
 }
 
-.notification-popup {
-    width: 300px;
-    background-color: aqua;
+.googleAuth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

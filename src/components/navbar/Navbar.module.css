@@ -1,0 +1,38 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px 10px 50px;
+  background-color: #94badb;
+  transition: all 0.3s ease;
+}
+
+/* ===== LOGO ===== */
+.app-logo {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+/* logout btn */
+.btn-type2 {
+  width: 100px;
+  border: 2px solid rgb(194, 108, 108);
+  background-color: rgb(166, 173, 35);
+  font-weight: 550;
+  color: azure;
+  cursor: pointer;
+}
+
+
+.btn-type2:hover {
+  background-color: rgb(217, 53, 53);
+  border: 2px solid rgb(246, 242, 242);
+}
+
+.btn-type2:active {
+  transform: scale(0.96);
+}
